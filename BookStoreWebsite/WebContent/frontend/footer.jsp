@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" style="clear:both">
 	<h4>Copyright (C) 2020 by Logismos</h4>
 	<a href="about">About Us</a> |
 	<a href="Contact Us">Contact Us</a> |

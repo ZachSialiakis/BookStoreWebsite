@@ -4,24 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Online Book Store</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<title>Page Not Found Error</title>
 </head>
 <body>
-	<jsp:directive.include file="header.jsp" />
-
-	
-	
+	<div>
+		<img src="${pageContext.request.contextPath}/images/admin.png" />
 	<div align="center">
-	<br/><br/>
-	<h3>This is main content:</h3>
-	<h2>New books:</h2>
-	<h2> Best-selling Books</h2>
-	<h2>Most-favoured Books</h2>
-	<br/><br/>
+	<h2>Sorry, the requested page could not be found.</h2>
 	</div>
-	
-	
-	<jsp:directive.include file="footer.jsp" />
+	<div>
+		<a href="javascript:history.go(-1);">Go Back</a>
+	</div>
 </body>
 </html>

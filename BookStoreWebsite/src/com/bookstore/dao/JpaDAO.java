@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.bookstore.entity.Book;
+
 public class JpaDAO<E> {
 	protected EntityManager entityManager;
 
@@ -60,6 +62,9 @@ public class JpaDAO<E> {
 	}
 	
 	
+	
+	
+	
 
 	public List<E> findWidthNamedQuery(String queryName, String paramName, Object paramValue) {
 		Query query = entityManager.createNamedQuery(queryName);
@@ -72,9 +77,9 @@ public class JpaDAO<E> {
 	public List<E> findWidthNamedQuery(String queryName, Map<String, Object> parameters) {
 		Query query = entityManager.createNamedQuery(queryName);
 		
-		Set<Entry<String, Object>> rawParameters = parameters.entrySet();
+		Set<Entry<String, Object>> setParameters = parameters.entrySet();
 		
-		for(Entry<String, Object> entry: rawParameters) {
+		for(Entry<String, Object> entry: setParameters) {
 			query.setParameter(entry.getKey(), entry.getValue());
 			
 		}
@@ -88,5 +93,10 @@ public class JpaDAO<E> {
 		Query query = entityManager.createNamedQuery(queryName);
 		return (long) query.getSingleResult();
 
+	}
+
+	public Book findByTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

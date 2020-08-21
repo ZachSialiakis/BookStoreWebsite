@@ -2,6 +2,8 @@ package com.bookstore.dao;
 
 import java.util.List;
 
+import com.bookstore.entity.Book;
+
 public interface GenericDAO<E> {
 
 	public E create(E t);
@@ -15,5 +17,7 @@ public interface GenericDAO<E> {
 	public List listAll();
 
 	public long count();
+
+	Book findByTitle(String title);
 
 }

@@ -24,7 +24,7 @@
 		</div>
 	</c:if>
 		
-		<form id="formLogin" action="Login" method="post">
+		<form id="formLogin" action="login" method="post">
 			<table>
 				<tr>
 					<td>Email:</td>
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><input type="text" name="password" id="password" size="20"></td>
+					<td><input type="password" name="password" id="password" size="20"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">

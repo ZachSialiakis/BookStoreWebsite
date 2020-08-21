@@ -52,7 +52,6 @@ public class UserServices {
 	}
 
 	public void createUser() throws ServletException, IOException {
-		Integer userId = Integer.parseInt(request.getParameter("userId"));
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");

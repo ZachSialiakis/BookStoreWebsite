@@ -96,7 +96,7 @@ public class CategoryServices {
 		Category categoryByName = categoryDAO.findByName(categoryName);
 		
 		if(categoryByName != null && categoryById.getCategoryId() != categoryByName.getCategoryId() ){
-			String message = "Could noy update category." 
+			String message = "Could not update category." 
 					+ "A category with name" + categoryName + "already exists.";
 		  request.setAttribute("message", message);
 		  
@@ -122,6 +122,8 @@ public class CategoryServices {
 		
 		
 	}
+	
+	
 
 	
 	}

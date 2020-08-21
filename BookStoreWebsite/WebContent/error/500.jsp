@@ -4,24 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Online Book Store</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<title>Internal Server Error</title>
 </head>
 <body>
-	<jsp:directive.include file="header.jsp" />
-
-	
-	
 	<div align="center">
-	<br/><br/>
-	<h3>This is main content:</h3>
-	<h2>New books:</h2>
-	<h2> Best-selling Books</h2>
-	<h2>Most-favoured Books</h2>
-	<br/><br/>
+		<img src="${pageContext.request.contextPath}/images/admin.png" />
+	<div>
+	<h2>Sorry, the server has encountered an error while processing your request.</h2>
+	<h3>Please check back later or contact our administrators</h3>
 	</div>
-	
-	
-	<jsp:directive.include file="footer.jsp" />
+	<div>
+		<a href="javascript:history.go(-1);">Go Back</a>
+	</div>
+	</div>
 </body>
 </html>

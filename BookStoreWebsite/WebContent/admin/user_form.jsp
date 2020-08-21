@@ -90,6 +90,11 @@
 				}
 			});
 
+		$("#buttonCancel").click(function(){
+			history.go(-1);
+	});
+		
+
 	});
 	
 </script>

@@ -19,7 +19,7 @@
  	     	</a> 
  	     </div>
  	     <div>
- 	     <a href="books">
+ 	     <a href="list_books">
  	     <img src="../images/study.jpg"/><br/>Books
  	     </a> 
  	     </div>
@@ -35,7 +35,7 @@
  	     </div>
  	     <div>
  	     <a href="orders">
- 	     <img src="../images/order.png"/><br/>Orders
+ 	     <img src="../images/order_icon.png"/><br/>Orders
  	     </a> 
  	     </div>
  	     
