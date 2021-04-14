@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,13 +27,17 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "book", catalog = "bookstoredb1", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
-@NamedQueries({
-	@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b"),
-	@NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
-	@NamedQuery(name = "Book.countAll", query = "SELECT COUNT(*) FROM Book b"),
-	@NamedQuery(name = "Book.findByCategory", query = "SELECT b FROM Book b JOIN " + "Category c ON b.category.categoryId = c.categoryId AND c.categoryId =:catId"),
-	@NamedQuery(name="Book.listNew", query = "SELECT b from Book b ORDER BY b.publishDate DESC")
-	
+@NamedQueries({ 
+		@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b"),
+		@NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
+		@NamedQuery(name = "Book.countAll", query = "SELECT COUNT(*) FROM Book b"),
+		@NamedQuery(name = "Book.countByCategory", query = "SELECT COUNT(b) FROM Book b WHERE b.category.categoryId = :catId"),
+		@NamedQuery(name = "Book.findByCategory", query = "SELECT b FROM Book b JOIN "
+				+ "Category c ON b.category.categoryId = c.categoryId AND c.categoryId = :catId"),
+		@NamedQuery(name = "Book.listNew", query = "SELECT b from Book b ORDER BY b.publishDate DESC"),
+		@NamedQuery(name = "Book.search", query = "SELECT b FROM Book b WHERE b.title LIKE '%' || :keyword || '%'"
+		+ " OR b.author LIKE '%' || :keyword || '%'"
+		+ " OR b.description LIKE '%' || :keyword || '%'")
 })
 
 public class Book implements java.io.Serializable {
@@ -85,7 +91,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_id", unique = true, nullable = false)
 	public int getBookId() {
 		return this.bookId;
@@ -95,7 +101,7 @@ public class Book implements java.io.Serializable {
 		this.bookId = bookId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {
 		return this.category;
@@ -196,18 +202,18 @@ public class Book implements java.io.Serializable {
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
+
 	@Transient
 	public String getBase64Image() {
 		this.base64Image = Base64.getEncoder().encodeToString(this.image);
 		return this.base64Image;
-		
+
 	}
+
 	@Transient
 	public void setBase64Image(String base64Image) {
-			this.base64Image = base64Image;
-		
-		
+		this.base64Image = base64Image;
+
 	}
 
 }

@@ -19,12 +19,11 @@
 
 	<div align="center" style="width: 80%; margin: 0 auto;">
 		<c:forEach items="${listBooks}" var="book">
-			<div style="float: left; display: inline-block; margin: 0 auto;">
+			<div style="float: left; display: inline-block; margin: 20px">
 				<div>
 					<a href="view_book?id=${book.bookId}">
-						<div>
-							<img src="data:image/jpg;base64,${book.base64Image}" width="128"
-								height="164" />
+							<img src="data:image/jpg;base64,${book.base64Image}" width="128" height="164" /> 
+							</a>
 						</div>
 						<div>
 							<a href="view_book?id=${book.bookId}"> <b>${book.title}</b>

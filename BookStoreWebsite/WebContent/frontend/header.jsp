@@ -1,19 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div align="center">
 	<div>
-		<img src="../images/bookstorelogo.png"/>
+	<a href="${pageContext.request.contextPath}">
+		<img src="./images/bookstore.png"/>
+		</a>
 	</div>
 
 
 	<div>
-
+		<form action="search" method="get">
 		<input type="text" name="keyword" size="50" />
-		<input type="button" value="Search" />
-		
+		<input type="submit" value="Search" />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="Login">Sign In</a> | 	
 		<a href="register">Register</a> |
 		<a href="view_cart">Cart</a>
+		</form>
 	</div>
 	<div>&nbsp;</div>
 	<div>

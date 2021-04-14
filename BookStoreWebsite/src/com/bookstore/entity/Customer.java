@@ -7,8 +7,12 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,13 +23,19 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "customer", catalog = "bookstoredb1", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@NamedQueries({
+	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
+	@NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
+	@NamedQuery(name = "Customer.countAll", query = "SELECT COUNT(c.email) FROM Customer c")
+	
+	
+})
 public class Customer implements java.io.Serializable {
 
 	private int customerId;
 	private String email;
 	private String fullName;
 	private String address;
-	private String customercol;
 	private String city;
 	private String country;
 	private String phone;
@@ -38,13 +48,12 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(int customerId, String email, String fullName, String address, String customercol, String city,
+	public Customer(int customerId, String email, String fullName, String address,String city,
 			String country, String phone, String zipcode, String password, Date registerDate) {
 		this.customerId = customerId;
 		this.email = email;
 		this.fullName = fullName;
 		this.address = address;
-		this.customercol = customercol;
 		this.city = city;
 		this.country = country;
 		this.phone = phone;
@@ -53,14 +62,13 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Customer(int customerId, String email, String fullName, String address, String customercol, String city,
+	public Customer(int customerId, String email, String fullName, String address,String city,
 			String country, String phone, String zipcode, String password, Date registerDate, Set<Review> reviews,
 			Set<BookOrder> bookOrders) {
 		this.customerId = customerId;
 		this.email = email;
 		this.fullName = fullName;
 		this.address = address;
-		this.customercol = customercol;
 		this.city = city;
 		this.country = country;
 		this.phone = phone;
@@ -72,7 +80,7 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id", unique = true, nullable = false)
 	public int getCustomerId() {
 		return this.customerId;
@@ -91,7 +99,7 @@ public class Customer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "full_name", nullable = false, length = 30)
+	@Column(name = "full_name", nullable = false, length = 64)
 	public String getFullName() {
 		return this.fullName;
 	}
@@ -100,7 +108,7 @@ public class Customer implements java.io.Serializable {
 		this.fullName = fullName;
 	}
 
-	@Column(name = "address", nullable = false, length = 45)
+	@Column(name = "address", nullable = false, length = 128)
 	public String getAddress() {
 		return this.address;
 	}
@@ -109,14 +117,6 @@ public class Customer implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@Column(name = "customercol", nullable = false, length = 128)
-	public String getCustomercol() {
-		return this.customercol;
-	}
-
-	public void setCustomercol(String customercol) {
-		this.customercol = customercol;
-	}
 
 	@Column(name = "city", nullable = false, length = 32)
 	public String getCity() {

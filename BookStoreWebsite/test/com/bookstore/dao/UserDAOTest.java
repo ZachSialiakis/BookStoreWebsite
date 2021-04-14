@@ -15,16 +15,14 @@ import org.junit.AfterClass;
 
 import com.bookstore.entity.Users;
 
-public class UserDAOTest extends BaseDAOTest {
+public class UserDAOTest{
 
 	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
 	private UserDAO userDAO;
 
 	@BeforeClass
 	public static void setupClass() throws Exception{
-		BaseDAOTest.setUpBeforeClass();
-		UserDAO userDAO = new UserDAO(entityManager);
+		UserDAO userDAO = new UserDAO();
 	}
 
 	@Test(expected = Exception.class)
@@ -108,7 +106,7 @@ public class UserDAOTest extends BaseDAOTest {
 	@Test 
 	public void testCount() {
 		long totalUsers = userDAO.count();
-		assertEquals(4, totalUsers); 
+		assertTrue(totalUsers > 0); 
 	}
 	
 	@Test
@@ -143,7 +141,7 @@ public class UserDAOTest extends BaseDAOTest {
 	}
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDAOTest.tearDownAfterClass();
+		UserDAO.close();
 		
 	}
 }

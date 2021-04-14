@@ -26,8 +26,7 @@ import javax.persistence.Table;
 public class Category implements java.io.Serializable {
 
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private int categoryId;
 	private String name;
 	private Set<Book> books = new HashSet<Book>(0);
@@ -53,6 +52,7 @@ public class Category implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id", unique = true, nullable = false)
 	public int getCategoryId() {
 		return this.categoryId;

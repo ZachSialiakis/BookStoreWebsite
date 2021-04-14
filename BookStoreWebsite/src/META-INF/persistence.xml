@@ -12,10 +12,15 @@
 			<property name = "javax.persistence.jdbc.password" value="Zaxarias264" />
 		    <property name = "javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name = "hibernate.show_sql" value = "true" />
+			<property name = "hibernate.format_sql" value = "true" />
 			
+			<property name = "hibernate.cp30.min_size" value = "5" />
+			<property name = "hibernate.cp30.max_size" value = "10" />
+			<property name = "hibernate.cp30.timeout" value = "120" />
+			<property name = "hibernate.cp30.max_statements" value = "50" />
+			<property name = "hibernate.cp30.idle_test_period" value = "3000" />
 			
-			
-			</properties>
+		</properties>
 
 	</persistence-unit>
 

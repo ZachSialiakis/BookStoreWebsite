@@ -18,13 +18,12 @@ public class UserServices {
 	private static UserDAO userDAO;
 	private static HttpServletResponse response;
 	private static HttpServletRequest request;
-	private EntityManager entityManager;
+	
 
-	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.entityManager = entityManager;
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-		userDAO = new UserDAO(entityManager);
+		userDAO = new UserDAO();
 
 	}
 
@@ -75,7 +74,7 @@ public class UserServices {
 	}
 
 	public void editUser() throws ServletException, IOException {
-		Integer userId = Integer.parseInt(request.getParameter("id"));
+		int userId = Integer.parseInt(request.getParameter("id"));
 		Users user = userDAO.get(userId);
 
 		String editPage = "user_form.jsp";
@@ -113,7 +112,7 @@ public class UserServices {
 
 	}
 
-	public static void deleteUser() throws ServletException, IOException {
+	public void deleteUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
 		userDAO.delete(userId);
 
